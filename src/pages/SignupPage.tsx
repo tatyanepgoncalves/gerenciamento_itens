@@ -1,6 +1,6 @@
 import FormSignup from "@/components/FormSignup";
-import Footer from "@/components/shared/public/Footer";
-import Header from "@/components/shared/public/Header";
+import Footer from "@/components/Footer";
+import Header from "@/components/HeaderPrivate";
 
 
 export default function SignupPage() {

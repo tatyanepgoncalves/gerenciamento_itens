@@ -1,6 +1,6 @@
 import FormLogin from "@/components/FormLogin";
-import Footer from "@/components/shared/public/Footer";
-import Header from "@/components/shared/public/Header";
+import Footer from "@/components/Footer";
+import Header from "@/components/HeaderPrivate";
 
 export default function LoginPage() {
 
