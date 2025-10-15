@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "name": "Admin Teste",
+    "email": "admin@teste.com",
+    "password": "senhaforte123"
+  },
+  {
+    "id": "2",
+    "name": "Usuario Simulado",
+    "email": "user@teste.com",
+    "password": "password123"
+  }
+]

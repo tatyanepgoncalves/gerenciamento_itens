@@ -3,10 +3,13 @@ import Footer from "@/components/shared/public/Footer";
 import Header from "@/components/shared/public/Header";
 
 export default function LoginPage() {
+
   return (
-    <div className="max-w-5xl w-full p-6 mx-auto min-h-full flex flex-col items-center justify-center gap-30">
+    <div className="flex flex-col items-center justify-between min-h-screen mx-auto">
       <Header />
-      <FormLogin />
+      <main className="w-full flex items-center justify-center px-6">
+        <FormLogin />
+      </main>
       <Footer />
     </div>
   )

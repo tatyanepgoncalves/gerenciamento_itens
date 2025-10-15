@@ -5,9 +5,11 @@ import Header from "@/components/shared/public/Header";
 
 export default function SignupPage() {
   return (
-    <div className="max-w-5xl w-full p-6 mx-auto min-h-full flex flex-col items-center justify-center gap-20">
+    <div className="flex flex-col items-center justify-between min-h-screen">
       <Header />
-      <FormSignup />
+      <main className="w-full flex items-center justify-center px-6"> 
+        <FormSignup />
+      </main>
       <Footer />
     </div>
   )
