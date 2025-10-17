@@ -1,5 +1,7 @@
-import { ClipboardList, Home, Package, Users, History } from 'lucide-react'
+import { ClipboardList, Home, Package, Users, History, Menu } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
+import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetDescription, SheetTitle, SheetClose} from "../ui/sheet"
+import { Button } from '../ui/button'
 
 const navItems = [
   { name: 'Dashboard', path: "/", icon: Home },
@@ -14,17 +16,34 @@ export default function NavMobile() {
   const location = useLocation()
   
   return (
-    <nav className='md:hidden w-full flex justify-between overflow-x-auto border-t p-2'>
-      {navItems.map((item) => (
-        <Link 
-          key={item.path}
-          to={item.path}
-          className={`flex flex-col items-center justify-center p-2 text-sm mx-1 rounded-sm transition-colors ${location.pathname === item.path ? "bg-indigo-500 text-primary-foreground" : "text-muted-foreground hover:bg-accent hover:text-accent-foreground"}`}
-        >
-          <item.icon className="mb-2 h-4 w-4" />
-          {item.name}
-        </Link>
-      ))}
-    </nav>
+    <Sheet>
+      <SheetTrigger asChild>
+        <Button aria-label="Abrir menu mobile">
+          <Menu />
+        </Button>
+      </SheetTrigger>
+
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>Navagação Mobile</SheetTitle>
+          <SheetDescription>Selecione uma opção abaixo.</SheetDescription>
+        </SheetHeader>
+
+        <nav className='grid gap-2 p-4'>
+          {navItems.map((link) => {
+            const isActive = location.pathname === link.path
+            return (
+            <SheetClose asChild key={link.name}>
+                <Link className={`flex items-center gap-3 p-3 rounded-lg transition-colors duration-200 ${isActive ? 'bg-indigo-600 text-white font-semibold shadow-md' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800'}`} to={link.path}>
+                  <link.icon className='h-5 w-5' /> 
+                  <span>{link.name}</span>
+                </Link>
+            </SheetClose>
+            )
+          })}
+        </nav>
+      </SheetContent>
+
+    </Sheet>
   )
 }

@@ -14,21 +14,26 @@ export default function NavDesktop() {
   const location = useLocation()
   
   return (
-     <nav className='hidden md:flex items-center space-x-4'>
-      {navItems.map((item) => (
-        <Link key={item.path}
-          to={item.path}
-          // APLICANDO AS CLASSES DO BOTÃO DIRETAMENTE NO LINK
-          className={cn(
-            "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 h-9 px-4 py-2", // Classes base do button
-            location.pathname === item.path 
-              ? "bg-primary text-primary-foreground shadow hover:bg-primary/90" // Classes da variant="default"
-              : "hover:bg-accent hover:text-accent-foreground" // Classes da variant="ghost"
-          )}>
-            <item.icon className="mr-2 h-4 w-4" />
-            {item.name}
-        </Link>
-      ))}
+     <nav className='hidden lg:flex items-center space-x-4'>
+
+      {navItems.map((link) => {
+        const isActive = location.pathname === link.path
+
+        return (
+          <Link 
+            key={link.name} 
+            to={link.path}
+           className={`flex items-center gap-3 p-3 rounded-lg transition-colors duration-200 ${isActive ? 'bg-indigo-600 text-white font-semibold shadow-md' : 'text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800'}`} 
+          >
+            <link.icon className='h-5 w-5' />
+            {link.name}
+          </Link>
+
+        )
+      })}
+
+      
+     
     </nav>
   )
 }
